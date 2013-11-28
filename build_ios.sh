@@ -1,5 +1,5 @@
 #!/bin/bash
-## Mini-Xcode: Xcode 5
+## Mini-Xcode: XCode 5
 
 MIN_VERSION="6.0"
 
