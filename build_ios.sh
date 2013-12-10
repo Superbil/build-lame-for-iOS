@@ -1,11 +1,13 @@
 #!/bin/bash
-## Mini-Xcode: XCode 5
 
 MIN_VERSION="6.0"
 
-OUTPUT_FOLDER=build
-CC=$(xcrun --find gcc)
-LIPO=$(xcrun --find lipo)
+# set default output folder is build
+OUTPUT_FOLDER=${PREFIX-build}
+
+# set default compiler
+CC=${CC-$(xcrun --find gcc)}
+LIPO=${LIPO-$(xcrun --find lipo)}
 
 XCODE_PATH=$(xcode-select -print-path)
 
