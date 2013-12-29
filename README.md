@@ -9,10 +9,12 @@ build lame for iOS versoin on XCode 5
 
 - get build script from here and run it
 
-    $ curl -OL https://github.com/Superbil/build-lame-for-iOS/raw/master/build_ios.sh
-    $ ./build_ios.sh
+```` bash
+$ curl -OL https://github.com/Superbil/build-lame-for-iOS/raw/master/build_ios.sh
+$ ./build_ios.sh
+````
 
-    iOS version library will into **build** folder
+* iOS library will into **build** folder
 
 ### Requirements
 
