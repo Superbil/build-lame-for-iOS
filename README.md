@@ -3,6 +3,10 @@ build-lame-for-iOS
 
 build lame for iOS versoin on XCode 5
 
+### Release Library
+
+You can download last lame library at [release](https://github.com/Superbil/build-lame-for-iOS/releases/latest).
+
 ### Usage
 
 - download lame source code from [here](http://lame.sourceforge.net/).
