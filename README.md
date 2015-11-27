@@ -1,7 +1,7 @@
-build-lame-for-iOS
+Build-lame-for-iOS
 ==================
 
-build lame for iOS versoin on XCode 5
+Build lame for iOS versoin on XCode
 
 ### Release Library
 
@@ -22,7 +22,7 @@ $ ./build_ios.sh
 
 ### Requirements
 
-* XCode 5 SDK
+* XCode 6 or after version
 
     Note, use xcode 4 SDK won't support some command
 
