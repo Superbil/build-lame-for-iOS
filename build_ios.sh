@@ -4,13 +4,11 @@
 MIN_VERSION="6.0"
 
 # set default output folder is build
-OUTPUT_FOLDER=${PREFIX-build}
+OUTPUT_FOLDER=${OUTPUT-build}
 
 # set default compiler
 CC=${CC-$(xcrun --find gcc)}
 LIPO=${LIPO-$(xcrun --find lipo)}
-
-XCODE_PATH=$(xcode-select -print-path)
 
 # make output folder
 mkdir -p $OUTPUT_FOLDER
@@ -20,7 +18,8 @@ function build_lame()
     make distclean
 
     # SDK must lower case
-    SDK_ROOT=$(xcrun --sdk $(echo ${SDK} | tr '[:upper:]' '[:lower:]') --show-sdk-path)
+    _SDK=$(echo ${SDK} | tr '[:upper:]' '[:lower:]')
+    SDK_ROOT=$(xcrun --sdk ${_SDK} --show-sdk-path)
 
     ./configure \
         CFLAGS="-arch ${PLATFORM} -pipe -std=c99 -isysroot ${SDK_ROOT} -miphoneos-version-min=${MIN_VERSION}" \
