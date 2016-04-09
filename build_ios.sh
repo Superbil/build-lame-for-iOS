@@ -23,7 +23,7 @@ function build_lame()
 
     ./configure \
         CFLAGS="-arch ${PLATFORM} -pipe -std=c99 ${BITCODE} -isysroot ${SDK_ROOT} -miphoneos-version-min=${MIN_VERSION}" \
-        --host="arm-apple-darwin9" \
+        --host="${HOST}-apple-darwin" \
         --enable-static \
         --disable-decoder \
         --disable-frontend \
@@ -36,12 +36,18 @@ function build_lame()
 }
 
 # bulid simulator version
+HOST="i686"
 SDK="iPhoneSimulator"
-PLATFORM="i686"
 BITCODE="-fembed-bitcode-maker"
+
+PLATFORM="i386"
+build_lame
+
+PLATFORM="x86_64"
 build_lame
 
 # build device version
+HOST="arm"
 SDK="iPhoneOS"
 BITCODE="-fembed-bitcode"
 
