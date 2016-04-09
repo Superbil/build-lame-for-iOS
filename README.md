@@ -29,3 +29,7 @@ $ ./build_ios.sh
 * Lame v3.99
 
     Tested on this version
+
+### Contributing
+
+Your contributions are always welcome! Please submit a [pull request](https://help.github.com/articles/using-pull-requests/) or create an issue with new scirpt file.
