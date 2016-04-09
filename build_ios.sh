@@ -6,6 +6,7 @@ MIN_VERSION="6.0"
 # set default output folder is build
 OUTPUT_FOLDER=${OUTPUT-build}
 
+MAKE=${MAKE-$(xcrun --find make)}
 # set default compiler
 CC=${CC-$(xcrun --find gcc)}
 LIPO=${LIPO-$(xcrun --find lipo)}
@@ -30,7 +31,7 @@ function build_lame()
         --disable-debug \
         --disable-dependency-tracking
 
-    make
+    $MAKE
 
     cp "libmp3lame/.libs/libmp3lame.a" "${OUTPUT_FOLDER}/libmp3lame-${PLATFORM}.a"
 }
