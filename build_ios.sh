@@ -22,7 +22,7 @@ function build_lame()
     SDK_ROOT=$(xcrun --sdk ${_SDK} --show-sdk-path)
 
     ./configure \
-        CFLAGS="-arch ${PLATFORM} -pipe -std=c99 -isysroot ${SDK_ROOT} -miphoneos-version-min=${MIN_VERSION}" \
+        CFLAGS="-arch ${PLATFORM} -pipe -std=c99 ${BITCODE} -isysroot ${SDK_ROOT} -miphoneos-version-min=${MIN_VERSION}" \
         --host="arm-apple-darwin9" \
         --enable-static \
         --disable-decoder \
@@ -38,10 +38,12 @@ function build_lame()
 # bulid simulator version
 SDK="iPhoneSimulator"
 PLATFORM="i686"
+BITCODE="-fembed-bitcode-maker"
 build_lame
 
 # build device version
 SDK="iPhoneOS"
+BITCODE="-fembed-bitcode"
 
 PLATFORM="armv7"
 build_lame
