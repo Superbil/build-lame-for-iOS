@@ -22,7 +22,7 @@ $ ./build_ios.sh
 
 ### Requirements
 
-* XCode 6 or after version
+* XCode 7 or after version
 
     Note, use xcode 4 SDK won't support some command
 
