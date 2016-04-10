@@ -1,18 +1,29 @@
-## Mini-Xcode: XCode 7
 #!/usr/bin/env bash
+
+################################################################################
+## Build-lame-for-iOS https://github.com/Superbil/build-lame-for-iOS
+##
+## Version: 1.2
+##
+## Xcode Require: Xcode 7
+##
+## Author: Superbil - https://github.com/superbil/
+################################################################################
+
 set -e
 
+# Min version for lame
 MIN_VERSION="6.0"
-
-# set default output folder is build
+# Set default output folder is build
 OUTPUT_FOLDER=${OUTPUT-build}
-
+# Set default make from Xcode
 MAKE=${MAKE-$(xcrun --find make)}
-# set default compiler
+# Set default compiler from Xcode
 CC=${CC-$(xcrun --find gcc)}
+# Set lipo from Xcode
 LIPO=${LIPO-$(xcrun --find lipo)}
 
-# make output folder
+# Make output folder
 mkdir -p $OUTPUT_FOLDER
 
 function build_lame()
@@ -23,7 +34,12 @@ function build_lame()
     _SDK=$(echo ${SDK} | tr '[:upper:]' '[:lower:]')
     SDK_ROOT=$(xcrun --sdk ${_SDK} --show-sdk-path)
 
+    # C compiler flags
+    # gcc in xcode is clang
+    # Ref: http://clang.llvm.org/docs/CommandGuide/clang.html
     CFLAGS="-arch ${PLATFORM} -pipe -std=c99 ${BITCODE} -isysroot ${SDK_ROOT} -miphoneos-version-min=${MIN_VERSION}"
+
+    # GNU Autoconf
     ./configure \
         CFLAGS="${CFLAGS}" \
         --host="${HOST}-apple-darwin" \
@@ -38,7 +54,7 @@ function build_lame()
     cp "libmp3lame/.libs/libmp3lame.a" "${OUTPUT_FOLDER}/libmp3lame-${PLATFORM}.a"
 }
 
-# bulid simulator version
+# Bulid simulator version
 HOST="i686"
 SDK="iPhoneSimulator"
 BITCODE="-fembed-bitcode-marker"
@@ -49,7 +65,7 @@ build_lame
 PLATFORM="x86_64"
 build_lame
 
-# build device version
+# Build device version
 HOST="arm"
 SDK="iPhoneOS"
 BITCODE="-fembed-bitcode"
