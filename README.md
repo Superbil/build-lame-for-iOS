@@ -1,3 +1,4 @@
+[![Build Status](https://travis-ci.org/Superbil/build-lame-for-iOS.svg)](https://travis-ci.org/Superbil/build-lame-for-iOS)
 Build-lame-for-iOS
 ==================
 
