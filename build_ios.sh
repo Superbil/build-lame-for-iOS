@@ -39,7 +39,7 @@ function build_lame()
 # bulid simulator version
 HOST="i686"
 SDK="iPhoneSimulator"
-BITCODE="-fembed-bitcode-maker"
+BITCODE="-fembed-bitcode-marker"
 
 PLATFORM="i386"
 build_lame
