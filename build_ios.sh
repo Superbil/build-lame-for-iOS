@@ -89,7 +89,7 @@ build_lame
 PLATFORM="arm64"
 build_lame
 
-# remove old libmp3lame.a or lipo will failed
+# Remove old libmp3lame.a or lipo will failed
 OUTPUT_LIB=${OUTPUT_FOLDER}/libmp3lame.a
 if [ -f $OUTPUT_LIB ]; then
     rm $OUTPUT_LIB
