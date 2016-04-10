@@ -1,13 +1,15 @@
 language: objective-c
 osx_image: xcode7.3
 
-branches:
-  only:
-    - master
-    - /^deploy-.*$/
+install: tar -xzf lame-3.99.5.tar.gz
 
-install:
-  - tar -xzf lame-3.99.5.tar.gz
+script: cd lame-3.99.5 && ../build_ios.sh
 
-script:
-  - cd lame-3.99.5 && ../build_ios.sh
+deploy:
+  provider: releases
+  file: build/libmp3lame.a
+  skip_cleanup: true
+  on:
+    tags: true
+  api-key:
+    secure: A3q+C1rrw2yXX/CzV/Utxcg2dKzPCQKDgg/MEWZ8K6/s6C8kRsbgv3YsM+iZpcUlw+ekUjIRUsQqDaBD5U36Avl3Mbdv3qIzHIH/dPRMdYSROaEzTv3BoqTBErOFwxLqEninqqRpTm2vO4bGdKemnN2O8Qe8XmU4h+ZvBPmWsqs=
