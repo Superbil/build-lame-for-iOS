@@ -18,7 +18,7 @@
 ## Author: Superbil - https://github.com/superbil/
 ################################################################################
 
-set -e
+set -ev
 
 # Min version for lame
 MIN_VERSION="6.0"
@@ -36,7 +36,9 @@ mkdir -p $OUTPUT_FOLDER
 
 function build_lame()
 {
-    ${MAKE} distclean
+    if [ -f "Makefile" ];then
+        ${MAKE} distclean
+    fi
 
     # SDK must lower case
     _SDK=$(echo ${SDK} | tr '[:upper:]' '[:lower:]')

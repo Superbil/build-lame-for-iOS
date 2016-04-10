@@ -1,0 +1,13 @@
+language: objective-c
+osx_image: xcode7.3
+
+branches:
+  only:
+    - master
+    - /^deploy-.*$/
+
+install:
+  - tar -xzf lame-3.99.5.tar.gz
+
+script:
+  - cd lame-3.99.5 && ../build_ios.sh
