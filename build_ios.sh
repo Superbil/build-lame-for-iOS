@@ -1,5 +1,6 @@
-#!/bin/bash
 ## Mini-Xcode: XCode 7
+#!/usr/bin/env bash
+set -e
 
 MIN_VERSION="6.0"
 
@@ -16,14 +17,15 @@ mkdir -p $OUTPUT_FOLDER
 
 function build_lame()
 {
-    make distclean
+    ${MAKE} distclean
 
     # SDK must lower case
     _SDK=$(echo ${SDK} | tr '[:upper:]' '[:lower:]')
     SDK_ROOT=$(xcrun --sdk ${_SDK} --show-sdk-path)
 
+    CFLAGS="-arch ${PLATFORM} -pipe -std=c99 ${BITCODE} -isysroot ${SDK_ROOT} -miphoneos-version-min=${MIN_VERSION}"
     ./configure \
-        CFLAGS="-arch ${PLATFORM} -pipe -std=c99 ${BITCODE} -isysroot ${SDK_ROOT} -miphoneos-version-min=${MIN_VERSION}" \
+        CFLAGS="${CFLAGS}" \
         --host="${HOST}-apple-darwin" \
         --enable-static \
         --disable-decoder \
@@ -31,7 +33,7 @@ function build_lame()
         --disable-debug \
         --disable-dependency-tracking
 
-    $MAKE
+    ${MAKE}
 
     cp "libmp3lame/.libs/libmp3lame.a" "${OUTPUT_FOLDER}/libmp3lame-${PLATFORM}.a"
 }
