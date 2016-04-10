@@ -1,7 +1,7 @@
 Build-lame-for-iOS
 ==================
 
-Build lame for iOS versoin on XCode
+Build lame for iOS version on Xcode.
 
 ### Release Library
 
