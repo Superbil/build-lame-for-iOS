@@ -3,9 +3,17 @@
 ################################################################################
 ## Build-lame-for-iOS https://github.com/Superbil/build-lame-for-iOS
 ##
-## Version: 1.2
+## Version 1.2
 ##
-## Xcode Require: Xcode 7
+## Lastest Change:
+## - Support Bitcode
+## - Fix build simulator problem
+##
+## Release Library
+## - Last library at https://github.com/Superbil/build-lame-for-iOS/releases/latest
+##
+## Requirements
+## - Xcode 7
 ##
 ## Author: Superbil - https://github.com/superbil/
 ################################################################################
